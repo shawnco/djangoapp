@@ -1,1 +1,4 @@
 __pycache__
+db.sqlite3
+starships/__pycache__
+starships/migrations/__pycache__
