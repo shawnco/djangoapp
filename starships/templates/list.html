@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}All Starships{% endblock %}
+{% block content %}
+{% if object_list %}
+    <ul>
+        {% for ship in object_list %}
+            <li><a href="{% url 'starships:view-starship' ship.id %}">{{ship.name}} ({{ship.registry}})</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+<p>No starships</p>
+{% endif %}
+{% endblock %}

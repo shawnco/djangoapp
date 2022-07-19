@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Starships Manager!{% endblock %}
 {% block content %}
-Main page
+    <ul>
+        <li><a href="{% url 'starships:list-starships' %}">View all starships</a></li>
+        <li><a href="{% url 'starships:create-starship' %}">Add starship</a></li>
+    </ul>
 {% endblock %}

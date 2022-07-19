@@ -1,6 +1,7 @@
 from django.shortcuts import render, reverse
 from django.views.generic import (
     TemplateView,
+    ListView,
     DetailView,
     CreateView,
     UpdateView,
@@ -30,7 +31,8 @@ class UpdateStarshipView(UpdateView):
     fields = ['name', 'registry']
 
     def get_success_url(self):
-        return reverse('starships:index')
+        pk = self.kwargs['pk']
+        return reverse('starships:view-starship', kwargs={'pk': pk})
 
 class DeleteStarshipView(DeleteView):
     template_name = 'confirm_delete.html'
@@ -38,3 +40,7 @@ class DeleteStarshipView(DeleteView):
 
     def get_success_url(self):
         return reverse('starships:index')
+
+class StarshipLiewView(ListView):
+    template_name = 'list.html'
+    model = Starship

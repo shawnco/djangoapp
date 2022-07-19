@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block title %}{{starship.name}}{% endblock %}
 {% block content %}
-<p>The starship {{starship.name}} has the registry {{starship.registry}}</p>
+    <p>The starship {{starship.name}} has the registry {{starship.registry}}</p>
+    <ul>
+        <li><a href="{% url 'starships:update-starship' starship.id %}">Edit</a></li>
+        <li><a href="{% url 'starships:delete-starship' starship.id %}">Delete</a></li>
+    </ul>
 {% endblock %}
