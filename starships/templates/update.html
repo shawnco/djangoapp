@@ -4,7 +4,7 @@
     {% if form.errors %}
         {{form.errors}}
     {% endif %}
-    <form action="/starships/{{starship.id}}/edit/" method="post">
+    <form action="{% url 'starships:update-starship' starship.id %}" method="post">
         {% csrf_token %}
         
         {% if form.non_field_errors %}

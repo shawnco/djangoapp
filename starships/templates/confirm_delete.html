@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Delete {{starship.name}}?{% endblock %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    Click Confirm to delete {{starship.name}}<br />
+    <input type="submit" value="Delete" />
+{% endblock %}

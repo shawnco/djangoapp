@@ -1,5 +1,12 @@
 from django.shortcuts import render, reverse
-from django.views.generic import TemplateView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import (
+    TemplateView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView
+)
+
 from .models import Starship
 
 class IndexView(TemplateView):
@@ -21,6 +28,13 @@ class UpdateStarshipView(UpdateView):
     template_name = 'update.html'
     model = Starship
     fields = ['name', 'registry']
+
+    def get_success_url(self):
+        return reverse('starships:index')
+
+class DeleteStarshipView(DeleteView):
+    template_name = 'confirm_delete.html'
+    model = Starship
 
     def get_success_url(self):
         return reverse('starships:index')
