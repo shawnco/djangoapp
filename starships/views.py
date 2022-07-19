@@ -11,14 +11,14 @@ from django.views.generic import (
 from .models import Starship
 
 class IndexView(TemplateView):
-    template_name = 'index.html'
+    template_name = 'starships/index.html'
 
 class StarshipDetailView(DetailView):
     model = Starship
-    template_name = 'detail.html'
+    template_name = 'starships/detail.html'
 
 class CreateStarshipView(CreateView):
-    template_name = 'create.html'
+    template_name = 'starships/create.html'
     model = Starship
     fields = ['name', 'registry']
     
@@ -26,7 +26,7 @@ class CreateStarshipView(CreateView):
         return reverse('starships:index')
 
 class UpdateStarshipView(UpdateView):
-    template_name = 'update.html'
+    template_name = 'starships/update.html'
     model = Starship
     fields = ['name', 'registry']
 
@@ -35,12 +35,12 @@ class UpdateStarshipView(UpdateView):
         return reverse('starships:view-starship', kwargs={'pk': pk})
 
 class DeleteStarshipView(DeleteView):
-    template_name = 'confirm_delete.html'
+    template_name = 'starships/confirm_delete.html'
     model = Starship
 
     def get_success_url(self):
         return reverse('starships:index')
 
 class StarshipLiewView(ListView):
-    template_name = 'list.html'
+    template_name = 'starships/list.html'
     model = Starship
