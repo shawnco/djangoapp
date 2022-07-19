@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Add Starship{% endblock %}
+{% block content %}
+    {% if form.errors %}
+        {{form.errors}}
+    {% endif %}
+    <form action="{% url 'starships:create-starship' %}" method="post">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+        {{form.non_field_errors}}
+        {% endif %}
+
+        {{form.name.errors}}
+        <label for="{{form.name.id_for_label}}">{{form.name.label}}: </label><br />
+        {{form.name}}
+        <p />
+        {{form.registry.errors}}
+        <label for="{{form.registry.id_for_label}}">{{form.registry.label}}: </label><br />
+        {{form.registry}}
+        <p />
+        <input type="submit" value="Add" />
+    </form>
+{% endblock %}
